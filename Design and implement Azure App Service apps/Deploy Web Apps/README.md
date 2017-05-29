@@ -12,6 +12,13 @@
 - App services plan still incur charges even if they have no apps associated with it.
 - To move an app to a different App Service plan, the plan must be in the **same resource group** and **geographical region**.
 
+## 3 Deployment methods
+1. FTP
+2.  Kudu (Git /Mercurial or OneDrive / Dropbox)
+..* Content Sync from OneDrive or Dropbox
+..* Repository-based CI with **auto** sync from **Github**, **Bitbucket** and **VSTS**
+..* Repository-based deployment with **manual** sync from a *local* Git.
+3.  Web Deploy
 
 ## App Service plans
 ### Definition
