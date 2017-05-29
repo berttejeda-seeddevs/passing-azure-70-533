@@ -10,15 +10,7 @@
 - Migrate Web Apps between App Service plans
 - Create a Web App within an App Service plan
 
-## Content
-### App Service plans
-defines
-- Region (North Europe)
-- Scale count (1, 2, 3, ...)
-- Instance size (Small, Medium, Large)
-- SKU (Free, Shared, Basic, Standard and Premium)
-
-Quick facts:
+## Quick facts:
 - All applications assigned to an App Service Plan share the resources defined by it.
 - Basic SKU or higher is necessary to specify the size and scale count of the VMs.
 - SKU and Scale of the App Service plan determines the cost and not the number of apps hosted in it.
@@ -26,14 +18,23 @@ Quick facts:
 - Clone allows you to copy your app to a new or existing App Service plan in **any** region.
 - App services plan still incur charges even if they have no apps associated with it.
 
-Reasons to isolate an app into a new App Service plan:
+
+## App Service plans
+### Definition
+- Region (North Europe)
+- Scale count (1, 2, 3, ...)
+- Instance size (Small, Medium, Large)
+- SKU (Free, Shared, Basic, Standard and Premium)
+
+### Reasons to isolate an app into a new App Service plan:
 - The App is resource intensive
 - The App needs resource in a different geographical region
 - The App scales different then other apps hosted in an existing plan.
 
-Requirements to move an app to a different App Service plan
+### Requirements to move an app to a different App Service plan
 - Same resource group
 - Same geographical region
 
-### Additional Resources
+## Additional Resources
 - [Azure App Service plans in-depth overview](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)
+- [Deploy your app to Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy)
