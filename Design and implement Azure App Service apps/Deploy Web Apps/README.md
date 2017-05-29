@@ -1,14 +1,7 @@
 # Deploy Web Apps
 
+Objectives: Define deployment slots; roll back deployments; implement pre- and post- deployment actions; create, configure, and deploy packages; create App Service plans; migrate Web Apps between App Service plans; create a Web App within an App Service plan
 
-## Objectives
-- Define deployment slots
-- Roll back deployments
-- Implement pre- and post- deployment actions
-- Create, configure, and deploy packages
-- Create App Service plans
-- Migrate Web Apps between App Service plans
-- Create a Web App within an App Service plan
 
 ## Quick facts:
 - All applications assigned to an App Service Plan share the resources defined by it.
