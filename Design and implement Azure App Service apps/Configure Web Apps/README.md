@@ -6,3 +6,7 @@
 - Configure certificates and custom domains
 - Configure SSL bindings and runtime configurations
 - Manage Web Apps by using Azure PowerShell and Xplat-CLI
+
+
+
+https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-configure
