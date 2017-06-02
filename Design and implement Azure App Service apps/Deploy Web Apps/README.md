@@ -1,7 +1,7 @@
 # Deploy Web Apps
 
 **Objectives:** 
-* [Define deployment slots](#Define-deployment-slots)
+* [Define deployment slots](#define-deployment-slots)
 * Roll back deployments
 * Implement pre- and post- deployment actions
 * Create, configure, and deploy packages
