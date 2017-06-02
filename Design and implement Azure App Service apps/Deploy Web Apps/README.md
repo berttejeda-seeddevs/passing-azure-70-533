@@ -11,8 +11,29 @@
 
 
 # Define deployment slots
-
 [Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing)
+
+* Requires **Standard** (5 slots) or **Premium** (20 slots) App Service Plan.
+* Slots are actualy live apps with their own hostnames.
+* Can be used to "prewarm" an update before releasing it to production.
+* There is no content after the slot is created.
+
+## Settings swap behavior
+### Settings that are swapped
+* General Settings (Framework version, Always On, ...)
+* Handler mapping
+* Monitoring and diagnostic
+* WebJob content
+### Settings that can be swapped (configurable)
+* App Settings
+* Connection Strings
+### Settings that are not swapped
+* WebJob schedulers
+* Scale settings
+* SSL certificates & binding
+* Endpoints
+* Custom Domain Name
+
 
 
 
