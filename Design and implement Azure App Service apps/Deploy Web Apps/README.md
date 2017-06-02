@@ -2,7 +2,7 @@
 
 **Objectives:** 
 * [Define deployment slots](#define-deployment-slots)
-* Roll back deployments
+* [Roll back deployments](#roll-back-deployments)
 * Implement pre- and post- deployment actions
 * Create, configure, and deploy packages
 * Create App Service plans
@@ -34,11 +34,15 @@
 * Endpoints
 * Custom Domain Name
 
+## Swap with preview
+Keeps the destination slot unchanged but applies the settings of the destination slot to the source slot **including** slot specific settings. This allows you to preview how the app will behave with the destination slot settings.
 
-
+# Roll back deployments
+[Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing)
 
 
 ## Quick facts:
+- Swap with preview is **not** supported for web apps on Linux.
 - All applications assigned to an App Service Plan share the resources defined by it.
 - Basic SKU or higher is necessary to specify the size and scale count of the VMs.
 - SKU and Scale of the App Service plan determines the cost and not the number of apps hosted in it.
