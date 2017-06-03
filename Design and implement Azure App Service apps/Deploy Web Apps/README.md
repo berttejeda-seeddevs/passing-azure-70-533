@@ -10,7 +10,7 @@
 * Create a Web App within an App Service plan
 
 
-# Define deployment slots
+## Define deployment slots
 [Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing)
 
 * Requires **Standard** (5 slots) or **Premium** (20 slots) App Service Plan.
@@ -35,13 +35,17 @@
 * Custom Domain Name
 
 ## Swap with preview
-Swap with preview is **not** supported for web apps on Linux.Keeps the destination slot unchanged but applies the settings of the destination slot to the source slot **including** slot specific settings. This allows you to preview how the app will behave with the destination slot settings.
+Keeps the destination slot unchanged but applies the settings of the destination slot to the source slot **including** slot specific settings. This allows you to preview how the app will behave with the destination slot settings.
+
+Swap with preview is **not** supported for web apps on Linux.
 
 ## Autoswap
-Autoswap is **not** supported for web apps on Linux. Autoswap allows to continuously deploy an app with zero cold start and zero downtime because the app gets *prewarmed* before swapped. 
+Autoswap allows to continuously deploy an app with zero cold start and zero downtime because the app gets *prewarmed* before swapped. 
+
+Autoswap is **not** supported for web apps on Linux. 
 
 # Roll back deployments
-[Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing)
+[Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing#to-rollback-a-production-app-after-swap)
 
 
 ## Quick facts:
