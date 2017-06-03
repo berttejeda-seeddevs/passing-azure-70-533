@@ -18,33 +18,33 @@
 * Can be used to "prewarm" an update before releasing it to production.
 * There is no content after the slot is created.
 
-## Settings swap behavior
-### Settings that are swapped
+### Settings swap behavior
+**Settings that are swapped**
 * General Settings (Framework version, Always On, ...)
 * Handler mapping
 * Monitoring and diagnostic
 * WebJob content
-### Settings that can be swapped (configurable)
+**Settings that can be swapped (configurable)**
 * App Settings
 * Connection Strings
-### Settings that are not swapped
+**Settings that are not swapped**
 * WebJob schedulers
 * Scale settings
 * SSL certificates & binding
 * Endpoints
 * Custom Domain Name
 
-## Swap with preview
+### Swap with preview
 Keeps the destination slot unchanged but applies the settings of the destination slot to the source slot **including** slot specific settings. This allows you to preview how the app will behave with the destination slot settings.
 
 Swap with preview is **not** supported for web apps on Linux.
 
-## Autoswap
+### Autoswap
 Autoswap allows to continuously deploy an app with zero cold start and zero downtime because the app gets *prewarmed* before swapped. 
 
 Autoswap is **not** supported for web apps on Linux. 
 
-# Roll back deployments
+## Roll back deployments
 [Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing#to-rollback-a-production-app-after-swap)
 
 
