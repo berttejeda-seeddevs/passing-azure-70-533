@@ -1,22 +1,22 @@
 # Deploy Web Apps
 
 **Objectives:** 
-* [Define deployment slots](#define-deployment-slots)
-* [Roll back deployments](#roll-back-deployments)
-* Implement pre- and post- deployment actions
-* Create, configure, and deploy packages
-* Create App Service plans
-* Migrate Web Apps between App Service plans
-* Create a Web App within an App Service plan
+* [Define deployment slots](#Slots)
+* [Roll back deployments](#Rollback)
+* [Implement pre- and post- deployment actions](#Actions)
+* [Create, configure, and deploy packages](#Configure)
+* [Create App Service plans](#Createasp)
+* [Migrate Web Apps between App Service plans](#Migrate)
+* [Create a Web App within an App Service plan](#Createwa)
 
-
+<a name="Slots"></a>
 ## Define deployment slots
 [Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing)
 
 * Requires **Standard** (5 slots) or **Premium** (20 slots) App Service Plan.
 * Slots are actualy live apps with their own hostnames.
-* Can be used to "prewarm" an update before releasing it to production.
-* There is no content after the slot is created.
+* Can be used to *prewarm* an update before releasing it to production.
+* There is *no content* after the slot is created.
 
 ### Settings swap behavior
 **Settings that are swapped**
@@ -24,9 +24,11 @@
 * Handler mapping
 * Monitoring and diagnostic
 * WebJob content
-**Settings that can be swapped (configurable)**
+
+**Settings that can be swapped (conf1igurable)**
 * App Settings
 * Connection Strings
+
 **Settings that are not swapped**
 * WebJob schedulers
 * Scale settings
@@ -44,9 +46,25 @@ Autoswap allows to continuously deploy an app with zero cold start and zero down
 
 Autoswap is **not** supported for web apps on Linux. 
 
+<a name="Rollback"></a>
 ## Roll back deployments
 [Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing#to-rollback-a-production-app-after-swap)
 
+
+<a name="Actions"> </a>
+## Implement pre- and post- deployment actions
+
+<a name="Deploy"> </a>
+## Create, configure, and deploy packages
+
+<a name="Createasp"> </a>
+## Create App Service plans
+
+<a name="Migrate"> </a>
+## Migrate Web Apps between App Service plans
+
+<a name="Createwa"> </a>
+## Create a Web App within an App Service plan
 
 ## Quick facts:
 - Swap with preview is **not** supported for web apps on Linux.
@@ -80,6 +98,51 @@ Autoswap is **not** supported for web apps on Linux.
 - The App needs resource in a different geographical region
 - The App scales different then other apps hosted in an existing plan.
 
+
+
+```
+# login
+Login-AzureRmAccount
+
+# create the resource group
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation
+
+# create the app service plan
+New-AzureRmAppServicePlan `
+    -Name $appServicePlanName `
+    -Location $resourceLocation `
+    -Tier Standard `
+    -NumberofWorkers 1 `
+    -WorkerSize Medium `
+    -ResourceGroupName $resourceGroupName
+
+# create the web app
+New-AzureRmWebApp `
+    -ResourceGroupName $resourceGroupName `
+    -Name $appName `
+    -Location $resourceLocation `
+    -AppServicePlan $appServicePlanName
+
+# create a deployment slot
+New-AzureRmWebAppSlot `
+    -ResourceGroupName $resourceGroupName `
+    -Name $appName `
+    -Slot $appSlotName `
+    -AppServicePlan $appServicePlanName
+
+# swap deployment slots
+$ParametersObject = @{targetSlot  = "production"}
+Invoke-AzureRmResourceAction `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType Microsoft.Web/sites/slots `
+    -ResourceName "$appName/$appSlotName" `
+    -Action slotsswap `
+    -Parameters $ParametersObject `
+    -ApiVersion 2015-07-01
+
+# clean up
+Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+```
 
 Todo:
 https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy
