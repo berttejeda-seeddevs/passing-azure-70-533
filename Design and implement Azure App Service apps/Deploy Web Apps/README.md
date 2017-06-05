@@ -25,7 +25,7 @@
 * Monitoring and diagnostic
 * WebJob content
 
-**Settings that can be swapped (conf1igurable)**
+**Settings that can be swapped (configurable)**
 * App Settings
 * Connection Strings
 
