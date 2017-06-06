@@ -10,9 +10,10 @@
 * [Create a Web App within an App Service plan](#Createwa)
 
 <a name="Slots"></a>
-## Define deployment slots
-[Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing)
 
+## Define deployment slots
+
+### Quick Facts
 * Requires **Standard** (5 slots) or **Premium** (20 slots) App Service Plan.
 * Slots are actualy live apps with their own hostnames.
 * Can be used to *prewarm* an update before releasing it to production.
@@ -28,11 +29,23 @@ New-AzureRmWebAppSlot `
     -AppServicePlan '70-533-asp'
 ```
 
-## Azure CLI 2.0
+
+### Azure CLI
 The following snippet will create a new slot called `my-new-slot` in the web app called `70-533-wa` using Azure CLI 2.0:
 ```
 az webapp deployment slot create --name 70-533-wa --resource-group 70-533-rg --slot my-new-slot
 ```
+
+
+### Swap with preview
+Keeps the destination slot unchanged but applies the settings of the destination slot to the source slot **including** slot specific settings. This allows you to preview how the app will behave with the destination slot settings.
+
+Swap with preview is **not** supported for web apps on Linux.
+
+### Autoswap
+Autoswap allows to continuously deploy an app with zero cold start and zero downtime because the app gets *prewarmed* before swapped. 
+
+Autoswap is **not** supported for web apps on Linux. 
 
 ### Settings swap behavior
 **Settings that are swapped**
@@ -52,15 +65,8 @@ az webapp deployment slot create --name 70-533-wa --resource-group 70-533-rg --s
 * Endpoints
 * Custom Domain Name
 
-### Swap with preview
-Keeps the destination slot unchanged but applies the settings of the destination slot to the source slot **including** slot specific settings. This allows you to preview how the app will behave with the destination slot settings.
-
-Swap with preview is **not** supported for web apps on Linux.
-
-### Autoswap
-Autoswap allows to continuously deploy an app with zero cold start and zero downtime because the app gets *prewarmed* before swapped. 
-
-Autoswap is **not** supported for web apps on Linux. 
+### Resources
+[Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing)
 
 <a name="Rollback"></a>
 ## Roll back deployments
@@ -166,11 +172,9 @@ Invoke-AzureRmResourceAction `
 Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 ```
 
-Todo:
-https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy
 
 
-Azure CLI 1 was written in JavaScript, Azure CLI 2.0 is written in Python.
+
 
 
 ## Additional Resources
