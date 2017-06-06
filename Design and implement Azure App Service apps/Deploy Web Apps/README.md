@@ -69,12 +69,30 @@ Autoswap is **not** supported for web apps on Linux.
 [Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing)
 
 <a name="Rollback"></a>
+
 ## Roll back deployments
 If there is an error within the production slot after a swap, roll back to the previous state by swapping the same to slots again.
 
-### Sources
+### PowerShell
+The following snippet will *swap* the **staging** slot with the **production** using PowerShell:
+```
+$ParametersObject = @{targetSlot  = "production"}
+Invoke-AzureRmResourceAction `
+    -ResourceGroupName "70-533-rg" `
+    -ResourceType Microsoft.Web/sites/slots `
+    -ResourceName "70-533-wa/staging" `
+    -Action slotsswap `
+    -Parameters $ParametersObject `
+    -ApiVersion 2015-07-01
+```
 
-* [To rollback a production app after swap](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing#Rollback)
+### Azure CLI
+The following snippet will *swap* the **staging** slot with the **production** using Azure CLI 2.0:
+az webapp deployment slot swap --resource-group 70-533-rg --target-slot production --slot staging --name 70-533-wa
+
+### Resources
+
+[To rollback a production app after swap](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing#Rollback)
 
 
 
