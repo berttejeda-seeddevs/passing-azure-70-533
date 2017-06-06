@@ -107,6 +107,7 @@ https://github.com/projectkudu/kudu/wiki/Post-Deployment-Action-Hooks
 ## Create, configure, and deploy packages
 
 `/site/wwwroot/App_Data/Jobs/` is the directory for web jobs
+
 `/site/wwwroot/` is the directory for web apps
 
 
@@ -116,6 +117,9 @@ https://github.com/projectkudu/kudu/wiki/Post-Deployment-Action-Hooks
     * Repository-based CI with **auto** sync from **Github**, **Bitbucket** and **VSTS**
     * Repository-based deployment with **manual** sync from a *local* Git.
 3.  Web Deploy (supports diff-only deployment, database creation, transforms of connection strings)
+
+### Resources
+[Azure App Service deployment overview]((https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing#overview)
 
 <a name="Createasp"> </a>
 ## Create App Service plans
