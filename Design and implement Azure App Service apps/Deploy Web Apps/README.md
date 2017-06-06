@@ -75,7 +75,7 @@ If there is an error within the production slot after a swap, roll back to the p
 
 ### PowerShell
 The following snippet will *swap* the **staging** slot with the **production** using PowerShell:
-```
+```powershell
 $ParametersObject = @{targetSlot  = "production"}
 Invoke-AzureRmResourceAction `
     -ResourceGroupName "70-533-rg" `
@@ -88,7 +88,9 @@ Invoke-AzureRmResourceAction `
 
 ### Azure CLI
 The following snippet will *swap* the **staging** slot with the **production** using Azure CLI 2.0:
+```
 az webapp deployment slot swap --resource-group 70-533-rg --target-slot production --slot staging --name 70-533-wa
+```
 
 ### Resources
 
