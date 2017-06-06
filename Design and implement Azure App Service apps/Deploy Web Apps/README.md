@@ -140,6 +140,18 @@ App Service plans define:
 * The App needs resource in a different geographical region
 * The App scales different then other apps hosted in an existing plan.
 
+### PowerShell
+```powershell
+New-AzureRmAppServicePlan `
+    -Name '70-533-asp' `
+    -Location 'West Europe' `
+    -Tier Standard `
+    -NumberofWorkers 1 `
+    -WorkerSize Medium `
+    -ResourceGroupName '70-533-rg'
+```
+### Azure CLI
+
 ### Resources
 [Azure App Service plans in-depth overview](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)
 
@@ -153,51 +165,18 @@ To move an app to a different App Service plan, the plan must be in the **same r
 
 
 <a name="Createwa"> </a>
+
 ## Create a Web App within an App Service plan
 
-
-
-```
-# login
-Login-AzureRmAccount
-
-# create the resource group
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation
-
-# create the app service plan
-New-AzureRmAppServicePlan `
-    -Name $appServicePlanName `
-    -Location $resourceLocation `
-    -Tier Standard `
-    -NumberofWorkers 1 `
-    -WorkerSize Medium `
-    -ResourceGroupName $resourceGroupName
-
-# create the web app
+### PowerShell
+```powershell
 New-AzureRmWebApp `
     -ResourceGroupName $resourceGroupName `
     -Name $appName `
     -Location $resourceLocation `
     -AppServicePlan $appServicePlanName
-
-# create a deployment slot
-New-AzureRmWebAppSlot `
-    -ResourceGroupName $resourceGroupName `
-    -Name $appName `
-    -Slot $appSlotName `
-    -AppServicePlan $appServicePlanName
-
-# swap deployment slots
-$ParametersObject = @{targetSlot  = "production"}
-Invoke-AzureRmResourceAction `
-    -ResourceGroupName $resourceGroupName `
-    -ResourceType Microsoft.Web/sites/slots `
-    -ResourceName "$appName/$appSlotName" `
-    -Action slotsswap `
-    -Parameters $ParametersObject `
-    -ApiVersion 2015-07-01
-
-# clean up
-Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 ```
+
+### Azure CLI
+
 
