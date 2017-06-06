@@ -19,6 +19,7 @@
 * There is *no content* after the slot is created.
 
 ### PowerShell
+The following snippet will create a new slot called `my-new-slot` in the web app called `70-533-wa` using PowerShell:
 ```powershell
 New-AzureRmWebAppSlot `
     -ResourceGroupName '70-533-rg' `
@@ -27,7 +28,11 @@ New-AzureRmWebAppSlot `
     -AppServicePlan '70-533-asp'
 ```
 
-## Xplath CLI
+## Azure CLI 2.0
+The following snippet will create a new slot called `my-new-slot` in the web app called `70-533-wa` using Azure CLI 2.0:
+```
+az webapp deployment slot create --name 70-533-wa --resource-group 70-533-rg --slot my-new-slot
+```
 
 ### Settings swap behavior
 **Settings that are swapped**
@@ -163,6 +168,10 @@ Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 
 Todo:
 https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy
+
+
+Azure CLI 1 was written in JavaScript, Azure CLI 2.0 is written in Python.
+
 
 ## Additional Resources
 - [Azure App Service plans in-depth overview](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)
