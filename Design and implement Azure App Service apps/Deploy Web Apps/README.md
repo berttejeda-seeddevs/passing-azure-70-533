@@ -18,6 +18,17 @@
 * Can be used to *prewarm* an update before releasing it to production.
 * There is *no content* after the slot is created.
 
+### PowerShell
+```powershell
+New-AzureRmWebAppSlot `
+    -ResourceGroupName '70-533-rg' `
+    -Name '70-533-wa' `
+    -Slot 'my-new-slot' `
+    -AppServicePlan '70-533-asp'
+```
+
+## Xplath CLI
+
 ### Settings swap behavior
 **Settings that are swapped**
 * General Settings (Framework version, Always On, ...)
@@ -48,7 +59,13 @@ Autoswap is **not** supported for web apps on Linux.
 
 <a name="Rollback"></a>
 ## Roll back deployments
-[Set up staging environments in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing#to-rollback-a-production-app-after-swap)
+If there is an error within the production slot after a swap, roll back to the previous state by swapping the same to slots again.
+
+### Sources
+
+* [To rollback a production app after swap](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-staged-publishing#Rollback)
+
+
 
 
 <a name="Actions"> </a>
