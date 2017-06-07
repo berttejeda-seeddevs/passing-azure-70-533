@@ -29,11 +29,10 @@ New-AzureRmWebAppSlot `
     -AppServicePlan '70-533-asp'
 ```
 
-
 ### Azure CLI
-The following snippet will create a new slot called `my-new-slot` in the web app called `70-533-wa` using Azure CLI 2.0:
+The following snippet will create a new slot called `my-new-slot` in the web app called `70-533-wa` using xPlat CLI
 ```
-az webapp deployment slot create --name 70-533-wa --resource-group 70-533-rg --slot my-new-slot
+azure webapp create --slot 'my-new-slot' --resource-group '70-533-rg' --location 'West Europe' --plan '70-533-asp' --name '70-533-wa'
 ```
 
 
@@ -141,6 +140,7 @@ App Service plans define:
 * The App scales different then other apps hosted in an existing plan.
 
 ### PowerShell
+Create an App Service Plan using PowerShell:
 ```powershell
 New-AzureRmAppServicePlan `
     -Name '70-533-asp' `
@@ -151,6 +151,10 @@ New-AzureRmAppServicePlan `
     -ResourceGroupName '70-533-rg'
 ```
 ### Azure CLI
+Create an App Service Plan using xPlat CLI:
+```
+azure appserviceplan create --name 70-533-asp --location "West Europe" --resource-group '70-533-rg' --sku S1 --instances 1
+```
 
 ### Resources
 [Azure App Service plans in-depth overview](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)
@@ -169,6 +173,7 @@ To move an app to a different App Service plan, the plan must be in the **same r
 ## Create a Web App within an App Service plan
 
 ### PowerShell
+Create a Web App using PowerShell
 ```powershell
 New-AzureRmWebApp `
     -ResourceGroupName $resourceGroupName `
@@ -177,6 +182,12 @@ New-AzureRmWebApp `
     -AppServicePlan $appServicePlanName
 ```
 
+
 ### Azure CLI
+Create a Web App using xPlat CLI
+```
+azure webapp create --name '70-533-wa' --resource-group '70-533-rg' --plan '70-533-asp' --location 'West Europe'
+```
 
-
+### Resources
+* [Using Azure Resource Manager-Based XPlat CLI for Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-app-azure-resource-manager-xplat-cli)
