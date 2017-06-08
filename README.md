@@ -1,5 +1,8 @@
 # Passing the 70-533 Implementing Microsoft Azure Infrastructure Solutions Exam
 
+## Content
+* [Design and implement Azure App Service apps](Design%20and%20implement%20Azure%20App%20Service%20apps/README.md)
+
 Azure CLI **1.0** is relevant for this exam since the last recent exam update was on november 2016.
 
 - ASE and Clone feature requires Premium Tier. 

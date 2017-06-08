@@ -86,9 +86,9 @@ Invoke-AzureRmResourceAction `
 ```
 
 ### Azure CLI
-The following snippet will *swap* the **staging** slot with the **production** using Azure CLI 2.0:
+The following snippet will *swap* the **staging** slot with the **production** using xPlat CLI:
 ```
-az webapp deployment slot swap --resource-group 70-533-rg --target-slot production --slot staging --name 70-533-wa
+azure webapp config set --resource-group '70-533-rg' --name '70-533-wa' --slot 'staging'
 ```
 
 ### Resources
